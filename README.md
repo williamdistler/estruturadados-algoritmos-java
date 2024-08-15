@@ -18,7 +18,7 @@
 - Merge Sort
 - Quick Sort
 
-# Algoritmos de Busca/Pesquisa
+## Algoritmos de Busca/Pesquisa
 - Busca Sequencial
 - Busca Binária
 
