@@ -41,4 +41,39 @@ public class Vetor {
 		}
 	}
 	
+	public int tamanho() {
+		return this.tamanho;
+	}
+	
+	public String busca (int posicao) {
+		if (!(posicao >= 0 && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição Inválida");
+		}
+		
+		return this.elementos[posicao];
+
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		
+		for (int i = 0; i < this.tamanho - 1; i++) {
+			s.append(this.elementos[i]);
+			s.append(", ");
+		}
+		
+		if (this.tamanho > 0) {
+			s.append(this.elementos[this.tamanho - 1]);
+		}
+		
+		s.append("]");
+		 
+		return s.toString();
+	}
+	
+	
+	
 }
