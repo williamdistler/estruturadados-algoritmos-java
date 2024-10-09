@@ -17,6 +17,14 @@ public class Lista<T> {
 		this.tamanho = 0;
 	}
 	
+	public T obter(int posicao) {
+		if(!(posicao >= 0 && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+		T elemento = this.elementos[posicao];
+		return elemento;
+	}
+		
 	public Boolean adicionar(T elemento) {
 		this.aumentarCapacidade();
 		
@@ -78,6 +86,27 @@ public class Lista<T> {
 		return -1;
 	}
 	
+    public boolean contem(T elemento) {
+//    	int posicao = busca(elemento);
+//    	if (posicao > -1) {
+//    		return true;
+//    	}
+//    	
+//    	return false
+    	
+        return busca(elemento) >= 0; // OR > -1
+    }
+    
+    public int ultimoIndiceDe(T elemento) {
+	// Como eu quero encontrar o ultimo elemento, faz sentido varrer a lista de tras para frente
+    	for (int i = this.tamanho-1; i >= 0; i--) {
+    		if (this.elementos[i].equals(elemento)) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
+	
 	public void remover (int posicao) {
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição Inválida");
@@ -95,6 +124,14 @@ public class Lista<T> {
 			this.remover(posicao);
 		else
 			System.out.println("Elemento não existe no vetor");;
+	}
+	
+	public void limpar() {
+		// this.elementos = (T[]) new Object[this.elementos.length];
+		// this.tamanho = 0
+		for (int i = 0; i < this.tamanho; i++) {
+			this.elementos[i] = null;
+		}
 	}
 	
 	@Override
